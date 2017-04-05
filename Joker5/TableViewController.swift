@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController {
     
     var jokeStore: JokeStore!
+    var jokes: [NSManagedObject] = []
+    var selectedRow: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +39,16 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.jokeStore.count()
+        return self.jokes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jokeCell", for: indexPath)
-
+        
         // Configure the cell...
-        let joke = self.jokeStore.getJoke(atIndex: indexPath.row)
-        cell.textLabel?.text = joke.firstLine
+        let joke = self.jokes[indexPath.row]
+        cell.textLabel?.text = joke.value(forKey: "line1") as? String
         return cell
     }
     
@@ -63,8 +66,17 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            self.jokeStore.remove(atIndex: indexPath.row)
+            let line1 = jokes[indexPath.row].value(forKey: "line1") as! String
+            let line2 = jokes[indexPath.row].value(forKey: "line2") as! String
+            let line3 = jokes[indexPath.row].value(forKey: "line3") as! String
+            let answer = jokes[indexPath.row].value(forKey: "answer") as! String
+            
+            let j = Joke(line1, line2, line3, answer)
+            
+            Database.db.removeJoke(j)
+            self.jokes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -95,18 +107,42 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if (segue.identifier == "toAddJoke") {
             let addJokeVC = segue.destination as! AddJokeViewController
-            addJokeVC.numJokes = self.jokeStore.count()
+            addJokeVC.numJokes = self.jokes.count
         }
+        if (segue.identifier == "toEditJoke"){
+            let editJokeVC = segue.destination as! EditJokeViewController
+            editJokeVC.jokes = jokes
+            editJokeVC.indexRow = self.selectedRow
+            
+        }
+        
+        
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedRow = indexPath.row
+        performSegue(withIdentifier: "toEditJoke", sender: nil)
+
+    }
     
     @IBAction func unwindToTable (sender: UIStoryboardSegue) {
         let addJokeVC = sender.source as! AddJokeViewController
         if (!addJokeVC.canceled) {
             let joke = addJokeVC.newJoke
-            self.jokeStore.add(joke)
+            Database.db.insertJoke(joke)
+            self.jokes = Database.db.getJoke()!
             self.tableView.reloadData()
         }
+    }
+    
+    @IBAction func unwindToTableFromEdit (sender: UIStoryboardSegue) {
+        //let addJokeVC = sender.source as! AddJokeViewController
+        //if (!addJokeVC.canceled) {
+            //let joke = addJokeVC.newJoke
+            //Database.db.insertJoke(joke)
+            self.jokes = Database.db.getJoke()!
+            self.tableView.reloadData()
+        //}
     }
 
 

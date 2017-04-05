@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 class Database {
-    static let cb = Database()
+    static let db = Database()
     
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -20,8 +20,9 @@ class Database {
     
     func insertJoke(_ joke: Joke){
         let context = getContext()
-        let newJoke = NSEntityDescription.insertNewObject(forEntityName: "JokeData", into: self.getContext())
-        
+        let entity = NSEntityDescription.entity(forEntityName: "JokeData", in: context)
+        let newJoke = NSManagedObject(entity: entity!, insertInto: context)
+    
         newJoke.setValue(joke.firstLine, forKey: "line1")
         newJoke.setValue(joke.secondLine, forKey: "line2")
         newJoke.setValue(joke.thirdLine, forKey: "line3")
@@ -30,14 +31,65 @@ class Database {
         do{
             try context.save()
         } catch{
-            
+            print("Error")
         }
+    }
+    
+    func editJoke(_ oldJoke: Joke, _ newJoke: Joke){
+        let context = getContext()
+        let fetchRequest: NSFetchRequest<JokeData> = JokeData.fetchRequest()
+        let pred = NSPredicate(format: "line1 == %@", oldJoke.firstLine)
+        fetchRequest.predicate = pred
+        
+        do{
+            let result = try context.fetch(fetchRequest) as [NSManagedObject]
+            let j = result.first!
+            
+            j.setValue(newJoke.firstLine, forKey: "line1")
+            j.setValue(newJoke.secondLine, forKey: "line2")
+            j.setValue(newJoke.thirdLine, forKey: "line3")
+            j.setValue(newJoke.answerLine, forKey: "answer")
+            
+            try context.save()
+            
+        }catch{
+            print("error")
+        }
+    }
+    
+    func getJoke() -> [NSManagedObject]? {
+        let fetchRequest: NSFetchRequest<JokeData> = JokeData.fetchRequest()
+        
+        do{
+            let results = try getContext().fetch(fetchRequest)
+            
+            for j in results as [NSManagedObject] {
+                print("\(j.value(forKey: "line1"))")
+            }
+            
+            return results as [NSManagedObject]
+            
+        }catch {
+            print("error")
+        }
+        return nil
     }
     
     func removeJoke(_ joke:Joke){
         let context = getContext()
-        let fetchRequest: NSFetchRequest<Jokes>(entityName:"JokeData")
-        fetchRequest.predicate = NSpredicate(format: "line1 == %@", joke.firstLine)
-        let jokePred = NSPredicate(format: <#T##String#>, argumentArray: <#T##[Any]?#>)
+        let fetchRequest: NSFetchRequest<JokeData> = JokeData.fetchRequest()
+        let pred = NSPredicate(format: "line1 == %@", joke.firstLine)
+        fetchRequest.predicate = pred
+        
+        do{
+            let result = try context.fetch(fetchRequest) as [NSManagedObject]
+            let j = result.first!
+            
+            context.delete(j)
+            try context.save()
+            
+        }catch{
+            print("error")
+        }
     }
 }

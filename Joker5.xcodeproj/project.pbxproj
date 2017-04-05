@@ -17,6 +17,7 @@
 		0998EB221E40822200EDBCD0 /* AddJokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998EB211E40822200EDBCD0 /* AddJokeViewController.swift */; };
 		2F149E0F1E9339C800602975 /* JokeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F149E0D1E9339C800602975 /* JokeData.xcdatamodeld */; };
 		2F149E111E933AD100602975 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149E101E933AD100602975 /* Database.swift */; };
+		2F149E341E9496D600602975 /* EditJokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149E331E9496D600602975 /* EditJokeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0998EB211E40822200EDBCD0 /* AddJokeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddJokeViewController.swift; sourceTree = "<group>"; };
 		2F149E0E1E9339C800602975 /* JokeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JokeData.xcdatamodel; sourceTree = "<group>"; };
 		2F149E101E933AD100602975 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		2F149E331E9496D600602975 /* EditJokeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditJokeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				0998EB191E407A0900EDBCD0 /* Info.plist */,
 				2F149E0D1E9339C800602975 /* JokeData.xcdatamodeld */,
 				2F149E101E933AD100602975 /* Database.swift */,
+				2F149E331E9496D600602975 /* EditJokeViewController.swift */,
 			);
 			path = Joker5;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				2F149E0F1E9339C800602975 /* JokeData.xcdatamodeld in Sources */,
 				0998EB201E407FD800EDBCD0 /* Joke.swift in Sources */,
 				09667CED1E4B7953004C1F44 /* TableViewController.swift in Sources */,
+				2F149E341E9496D600602975 /* EditJokeViewController.swift in Sources */,
 				2F149E111E933AD100602975 /* Database.swift in Sources */,
 				0998EB221E40822200EDBCD0 /* AddJokeViewController.swift in Sources */,
 			);

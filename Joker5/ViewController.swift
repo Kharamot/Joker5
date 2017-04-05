@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
+    var jokes: [NSManagedObject] = []
     var jokeStore = JokeStore()
+    let appRun = UserDefaults.standard
     
     @IBOutlet weak var firstLineLabel: UILabel!
     @IBOutlet weak var secondLineLabel: UILabel!
@@ -32,7 +35,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        initializeJokes()
+        let hasAppRan = "AppHasRan"
+        
+        if(appRun.object(forKey: hasAppRan) == nil)
+        {
+            
+            initializeJokes()
+            appRun.set(true, forKey: hasAppRan)
+            appRun.synchronize()
+        }
         chooseJoke()
     }
 
@@ -42,23 +53,40 @@ class ViewController: UIViewController {
     }
 
     func initializeJokes() {
+        
         var joke = Joke("How many programmers", "does it take to", "change a lightbulb?", "Zero. That's a hardware problem.")
-        self.jokeStore.add(joke)
+        Database.db.insertJoke(joke)
         joke = Joke("What did the fish say", "when it ran into a wall?", "", "Dam.")
-        self.jokeStore.add(joke)
+        Database.db.insertJoke(joke)
         joke = Joke("A horse walked into a bar,", "and the bartender said...", "", "Why the long face?")
-        self.jokeStore.add(joke)
+        Database.db.insertJoke(joke)
     }
     
     func chooseJoke() {
+        
         // change button to "Answer"
         answerButton.setTitle("Answer", for: .normal)
         // hide answer label
         answerLineLabel.isHidden = true
         // choose a joke from the array at random
-        let randomJokeIndex = Int(arc4random_uniform(UInt32(self.jokeStore.count())))
-        let joke = self.jokeStore.getJoke(atIndex: randomJokeIndex)
-        self.displayJoke(joke)
+//        let randomJokeIndex = Int(arc4random_uniform(UInt32(self.jokeStore.count())))
+//        let joke = self.jokeStore.getJoke(atIndex: randomJokeIndex)
+//        self.displayJoke(joke)
+        getJokes()
+    }
+    
+    func getJokes() {
+        jokes = Database.db.getJoke()!
+        let randomJokeIndex = Int(arc4random_uniform(UInt32(self.jokes.count)))
+        
+        let line1 = jokes[randomJokeIndex].value(forKey: "line1") as! String
+        let line2 = jokes[randomJokeIndex].value(forKey: "line2") as! String
+        let line3 = jokes[randomJokeIndex].value(forKey: "line3") as! String
+        let answer = jokes[randomJokeIndex].value(forKey: "answer") as! String
+        
+        let j = Joke(line1, line2, line3, answer)
+        
+        self.displayJoke(j)
     }
     
     func displayJoke (_ joke: Joke) {
@@ -88,7 +116,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toJokesTable") {
             let jokesTableVC = segue.destination as! TableViewController
-            jokesTableVC.jokeStore = self.jokeStore
+            jokesTableVC.jokes = self.jokes
         }
     }
 

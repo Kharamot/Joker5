@@ -98,6 +98,116 @@
             </objects>
             <point key="canvasLocation" x="918" y="124"/>
         </scene>
+        <!--Edit Joke-->
+        <scene sceneID="fSt-lp-Yya">
+            <objects>
+                <viewController id="yD6-oC-eci" customClass="EditJokeViewController" customModule="Joker5" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eRX-83-rPz"/>
+                        <viewControllerLayoutGuide type="bottom" id="i9T-we-qjD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8eJ-xb-Sec">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line 1:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXN-Vv-ndl">
+                                <rect key="frame" x="8" y="128" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line 2:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgi-Vj-d8u">
+                                <rect key="frame" x="8" y="164" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line 3:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uB-9C-fFb">
+                                <rect key="frame" x="8" y="199" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q81-0M-cPE">
+                                <rect key="frame" x="8" y="235" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnE-l4-KTA">
+                                <rect key="frame" x="84" y="123" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMh-XN-UxJ">
+                                <rect key="frame" x="84" y="164" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kec-gn-kHt">
+                                <rect key="frame" x="84" y="194" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k2Y-bW-G5G">
+                                <rect key="frame" x="84" y="230" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kec-gn-kHt" firstAttribute="top" secondItem="YMh-XN-UxJ" secondAttribute="bottom" id="2DS-ws-IjJ"/>
+                            <constraint firstItem="bnE-l4-KTA" firstAttribute="trailing" secondItem="8eJ-xb-Sec" secondAttribute="trailingMargin" id="AGe-ms-lEC"/>
+                            <constraint firstItem="7uB-9C-fFb" firstAttribute="leading" secondItem="8eJ-xb-Sec" secondAttribute="leading" constant="8" id="ENP-9s-eqg"/>
+                            <constraint firstItem="hgi-Vj-d8u" firstAttribute="leading" secondItem="8eJ-xb-Sec" secondAttribute="leading" constant="8" id="Nx3-LR-10d"/>
+                            <constraint firstItem="qXN-Vv-ndl" firstAttribute="top" secondItem="eRX-83-rPz" secondAttribute="bottom" constant="34" id="Q1W-Eo-PJC"/>
+                            <constraint firstItem="qXN-Vv-ndl" firstAttribute="leading" secondItem="8eJ-xb-Sec" secondAttribute="leading" constant="8" id="VBm-8T-qHV"/>
+                            <constraint firstItem="q81-0M-cPE" firstAttribute="top" secondItem="7uB-9C-fFb" secondAttribute="bottom" constant="15" id="WZP-ta-Sz2"/>
+                            <constraint firstItem="hgi-Vj-d8u" firstAttribute="top" secondItem="qXN-Vv-ndl" secondAttribute="bottom" constant="15" id="WdX-4h-aRq"/>
+                            <constraint firstItem="kec-gn-kHt" firstAttribute="leading" secondItem="7uB-9C-fFb" secondAttribute="trailing" constant="24" id="YcZ-ui-KBt"/>
+                            <constraint firstItem="YMh-XN-UxJ" firstAttribute="top" secondItem="bnE-l4-KTA" secondAttribute="bottom" constant="11" id="aUj-as-Cg3"/>
+                            <constraint firstItem="YMh-XN-UxJ" firstAttribute="trailing" secondItem="8eJ-xb-Sec" secondAttribute="trailingMargin" id="bki-Nb-QWy"/>
+                            <constraint firstItem="bnE-l4-KTA" firstAttribute="leading" secondItem="qXN-Vv-ndl" secondAttribute="trailing" constant="27" id="cgC-rZ-vmB"/>
+                            <constraint firstItem="q81-0M-cPE" firstAttribute="leading" secondItem="8eJ-xb-Sec" secondAttribute="leading" constant="8" id="deS-Lv-H0g"/>
+                            <constraint firstItem="k2Y-bW-G5G" firstAttribute="leading" secondItem="q81-0M-cPE" secondAttribute="trailing" constant="14" id="exe-bn-Kn8"/>
+                            <constraint firstItem="bnE-l4-KTA" firstAttribute="top" secondItem="eRX-83-rPz" secondAttribute="bottom" constant="29" id="i1n-F4-ELb"/>
+                            <constraint firstItem="k2Y-bW-G5G" firstAttribute="top" secondItem="kec-gn-kHt" secondAttribute="bottom" constant="6" id="oll-7t-m2l"/>
+                            <constraint firstItem="kec-gn-kHt" firstAttribute="trailing" secondItem="8eJ-xb-Sec" secondAttribute="trailingMargin" id="tOJ-nH-dux"/>
+                            <constraint firstItem="k2Y-bW-G5G" firstAttribute="trailing" secondItem="8eJ-xb-Sec" secondAttribute="trailingMargin" id="xTE-6a-LG9"/>
+                            <constraint firstItem="YMh-XN-UxJ" firstAttribute="leading" secondItem="hgi-Vj-d8u" secondAttribute="trailing" constant="25" id="xTn-bH-aeZ"/>
+                            <constraint firstItem="7uB-9C-fFb" firstAttribute="top" secondItem="hgi-Vj-d8u" secondAttribute="bottom" constant="14" id="yg3-Eq-BuU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Joke" prompt="Joker" id="5tM-0W-o2v">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="oon-0d-8aM">
+                            <connections>
+                                <action selector="cancelTapped:" destination="yD6-oC-eci" id="wSa-ll-Vqh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="PgV-7Z-ZMh">
+                            <connections>
+                                <action selector="saveTapped:" destination="yD6-oC-eci" id="aPN-hb-HIc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="TextFieldAnswer" destination="k2Y-bW-G5G" id="aUY-d2-Ae7"/>
+                        <outlet property="TextFieldLine1" destination="bnE-l4-KTA" id="CLj-kB-wiH"/>
+                        <outlet property="TextFieldLine2" destination="YMh-XN-UxJ" id="2MJ-zr-fWj"/>
+                        <outlet property="TextViewLine3" destination="kec-gn-kHt" id="gj8-5h-UcW"/>
+                        <segue destination="o3X-8L-Hsz" kind="unwind" identifier="unwindToTableFromEdit" unwindAction="unwindToTableFromEditWithSender:" id="t5f-zU-ws3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wzf-hG-Qo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="o3X-8L-Hsz" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-682.39999999999998" y="899.10044977511257"/>
+        </scene>
         <!--View Jokes-->
         <scene sceneID="3TK-kD-ova">
             <objects>
@@ -107,15 +217,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="jokeCell" textLabel="c4T-Gc-MEp" style="IBUITableViewCellStyleDefault" id="nOb-hb-L8x">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="jokeCell" textLabel="c4T-Gc-MEp" style="IBUITableViewCellStyleDefault" id="nOb-hb-L8x">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nOb-hb-L8x" id="3qw-OH-Otc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c4T-Gc-MEp">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -123,6 +233,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="yD6-oC-eci" kind="show" identifier="toEditJoke" id="ZsF-8L-BAG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
